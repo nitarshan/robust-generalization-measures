@@ -1,8 +1,7 @@
 # In search robust measures of generalization
 
 Gintare Karolina Dziugaite\*, Alexandre Drouin\*, Brady Neal, Nitarshan Rajkumar, Ethan Caballero, Linbo Wang, Ioannis Mitliagkas, Daniel M. Roy
-
-\* Equal contribution
+(\* Equal contribution)
 
 Contact: karolina.dzigaite@elementai.com, alexandre.drouin@elementai.com
 
