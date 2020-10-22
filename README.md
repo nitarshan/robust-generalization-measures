@@ -1,4 +1,6 @@
 # In Search of Robust Measures of Generalization
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
 
 **Gintare Karolina Dziugaite**, **Alexandre Drouin**, Brady Neal, Nitarshan Rajkumar, Ethan Caballero, Linbo Wang, Ioannis Mitliagkas, Daniel M. Roy
 
