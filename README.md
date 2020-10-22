@@ -3,7 +3,7 @@
 Gintare Karolina Dziugaite\*, Alexandre Drouin\*, Brady Neal, Nitarshan Rajkumar, Ethan Caballero, Linbo Wang, Ioannis Mitliagkas, Daniel M. Roy
 (\* Equal contribution)
 
-Contact: karolina.dzigaite@elementai.com, alexandre.drouin@elementai.com
+Contact: karolina.dziugaite@elementai.com, alexandre.drouin@elementai.com
 
 ![Cover figure](https://github.com/nitarshan/robust-generalization-measures/raw/master/paper_graphic.png)
 
