@@ -1,6 +1,6 @@
 # In search robust measures of generalization
 
-Gintare Karolina Dziugaite (\*), Alexandre Drouin (\*), Brady Neal, Nitarshan Rajkumar, Ethan Caballero, Linbo Wang, Ioannis Mitliagkas, Daniel M. Roy
+Gintare Karolina Dziugaite\*, Alexandre Drouin\*, Brady Neal, Nitarshan Rajkumar, Ethan Caballero, Linbo Wang, Ioannis Mitliagkas, Daniel M. Roy
 
 \* Equal contribution
 
