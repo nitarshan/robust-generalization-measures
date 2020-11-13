@@ -14,6 +14,10 @@ paper:
 	@make figure-cdf-all-measures dataset=all min_weight=12 filter_noise=True
 	@mv figure__signerror_cdf_per_hp__ds_cifar10_svhn__mw_12.000000_cdf_per_hp.pdf figure_1.pdf
 
+	@echo "... Figure 3"
+	@make figure-supp-envs-vs-miness dataset=all
+	@mv figure_miness_remaining_environments_ds_cifar10_svhn_range_0_100.pdf figure_3.pdf
+
 	@echo "... Figure 8"
 	@make figure-cdf-all-measures dataset=svhn min_weight=12 filter_noise=True
 	@mv figure__signerror_cdf_per_hp__ds_svhn__mw_12.000000_cdf_per_hp.pdf figure_8.pdf
@@ -36,6 +40,13 @@ precompute: .require_dataset .require_filter_noise
 figure-cdf-all-measures: precompute
 figure-cdf-all-measures: .require_dataset .require_min_weight
 	python3 figure_cdf_all_measures.py $(DATASET_$(dataset)) $(min_weight) true
+
+
+# Supplementary Figure: number of environments remaining at various min effective sample sizes
+figure-supp-envs-vs-miness: lower = 0
+figure-supp-envs-vs-miness: upper=100
+figure-supp-envs-vs-miness: .require_dataset
+	python supp_figure_envs_remaining.py $(DATASET_$(dataset)) $(lower) $(upper)
 
 
 .require_dataset:
