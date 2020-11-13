@@ -12,7 +12,11 @@ paper:
 
 	@echo "... Figure 1"
 	@make figure-cdf-all-measures dataset=all min_weight=12 filter_noise=True
-	@mv figure__signerror_cdf_per_hp__ds_cifar10_svhn__mw_12.000000_cdf_per_hp.pdf figure_1.pdf
+	@mv figure__signerror_cdf_per_hp__ds_cifar10_svhn__mess_12.000000__filternoise_True_cdf_per_hp.pdf figure_1.pdf
+
+	@echo "... Figure 2"
+	@make figure-triangle-cdf dataset=all measure=complexity.pacbayes_mag_flatness hp=hp.model_depth min_weight=12 filter_noise=True
+	@mv figure_triangle_cdf__ds_cifar10_svhn__mess_12.000000__gm_pacbayes.mag.flatness__filternoise_True_hp_hp.model_depth.pdf figure_2.pdf
 
 	@echo "... Figure 3"
 	@make figure-supp-envs-vs-miness dataset=all
@@ -20,11 +24,11 @@ paper:
 
 	@echo "... Figure 8"
 	@make figure-cdf-all-measures dataset=svhn min_weight=12 filter_noise=True
-	@mv figure__signerror_cdf_per_hp__ds_svhn__mw_12.000000_cdf_per_hp.pdf figure_8.pdf
+	@mv figure__signerror_cdf_per_hp__ds_svhn__mess_12.000000__filternoise_True_cdf_per_hp.pdf figure_8.pdf
 
 	@echo "... Figure 10"
 	@make figure-cdf-all-measures dataset=cifar10 min_weight=12 filter_noise=True
-	@mv figure__signerror_cdf_per_hp__ds_cifar10__mw_12.000000_cdf_per_hp.pdf figure_10.pdf
+	@mv figure__signerror_cdf_per_hp__ds_cifar10__mess_12.000000__filternoise_True_cdf_per_hp.pdf figure_10.pdf
 
 
 # Precompute the environments to speed up plotting
@@ -36,10 +40,16 @@ precompute: .require_dataset .require_filter_noise
 	|| echo "Precomputation file found."
 
 
-# Main figure: CDF of all environment sign errors per HP
+# Main text figure: CDF of all environment sign errors per HP
 figure-cdf-all-measures: precompute
-figure-cdf-all-measures: .require_dataset .require_min_weight
-	python3 figure_cdf_all_measures.py $(DATASET_$(dataset)) $(min_weight) true
+figure-cdf-all-measures: .require_dataset .require_min_weight .require_filter_noise
+	python3 figure_cdf_all_measures.py $(DATASET_$(dataset)) $(min_weight) $(filter_noise)
+
+
+# Main text figure: CDF of environment sign errors for pairs of HP values
+figure-triangle-cdf: precompute
+figure-triangle-cdf: .require_dataset .require_measure .require_hp .require_min_weight .require_filter_noise
+	python3 figure_triangle_cdf.py $(DATASET_$(dataset)) $(measure) $(hp) $(min_weight) $(filter_noise)
 
 
 # Supplementary Figure: number of environments remaining at various min effective sample sizes
