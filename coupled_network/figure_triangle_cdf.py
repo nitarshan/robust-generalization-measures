@@ -10,7 +10,6 @@ from warnings import warn
 from common import pretty_measure
 
 
-DATA_PATH = "../data/nin.cifar10_svhn.csv"
 ENVIRONMENT_CACHE_PATH = "./environment_cache"
 
 
@@ -82,7 +81,7 @@ def triangle_cdf_plots_get_losses(hp, precomp, measure, min_ess=20.):
             losses = np.array([env_losses[x] for x in zip(v1_idx, v2_idx)])
             selector = np.logical_or(np.isclose(effective_sample_sizes, min_ess), effective_sample_sizes > min_ess)
             losses = losses[selector] / sum_of_weights[selector]  # Normalize weights to sum to 1 in the average
-            
+
             box_losses[(v1, v2)] = losses
 
     return box_losses
@@ -92,7 +91,7 @@ def make_figure(datasets, measure, hp, min_ess=12, filter_noise=True):
     data_key = "_".join(datasets)
 
     precomp = pickle.load(open(ENVIRONMENT_CACHE_PATH + "/precomputations__filternoise%s__%s.pkl" %
-                                (filter_noise, data_key), "rb"))
+                               (filter_noise, data_key), "rb"))
 
     box_losses = triangle_cdf_plots_get_losses(hp, precomp, measure, min_ess=min_ess)
 
@@ -113,12 +112,14 @@ def make_figure(datasets, measure, hp, min_ess=12, filter_noise=True):
                 z = np.zeros((len(bins), 1))
                 for k, b in enumerate(bins):
                     z[k] = (box_losses[(v1, v2)] <= b).sum() / len(box_losses[(v1, v2)])
-                
+
                 heatmap = sns.heatmap(z, cmap="Blues_r", vmin=0.5, vmax=1, rasterized=True, ax=axes[i, j],
                                       cbar_ax=cbar_ax)
 
-                axes[i, j].axhline(np.percentile(box_losses[(v1, v2)], q=90) * 100, color="magenta", linestyle="--", linewidth=1.5, zorder=2)
-                axes[i, j].axhline(np.mean(box_losses[(v1, v2)]) * 100, color="orange", linestyle=":", linewidth=1.5, zorder=2)
+                axes[i, j].axhline(np.percentile(box_losses[(v1, v2)], q=90) * 100, color="magenta", linestyle="--",
+                                   linewidth=1.5, zorder=2)
+                axes[i, j].axhline(np.mean(box_losses[(v1, v2)]) * 100, color="orange", linestyle=":",
+                                   linewidth=1.5, zorder=2)
                 axes[i, j].axhline(np.max(box_losses[(v1, v2)]) * 100, color="limegreen", linewidth=1.5, zorder=1)
             else:
                 # No data = no environment had a total weight ≥ min weight
@@ -148,13 +149,14 @@ def make_figure(datasets, measure, hp, min_ess=12, filter_noise=True):
         axes[i, 0].yaxis.set_visible(True)
         axes[-1, i].xaxis.set_visible(True)
 
-    cbar = heatmap.collections[0].colorbar.ax.tick_params(labelsize=6)
+    heatmap.collections[0].colorbar.ax.tick_params(labelsize=6)
     plt.subplots_adjust(wspace=0.2, hspace=0.2)
 
     lines = [(Line2D([0], [0], color='limegreen', linewidth=1.5, linestyle='-'), 'max'),
              (Line2D([0], [0], color='magenta', linewidth=1.5, linestyle='--'), '90th percentile'),
              (Line2D([0], [0], color='orange', linewidth=1.5, linestyle=':'), 'mean')]
-    plt.legend(*zip(*lines), loc='upper center', ncol=len(lines), bbox_to_anchor=(-6.7, 1.22), columnspacing=1, fontsize=4.5)
+    plt.legend(*zip(*lines), loc='upper center', ncol=len(lines), bbox_to_anchor=(-6.7, 1.22), columnspacing=1,
+               fontsize=4.5)
 
     f.set_size_inches(w=1.3, h=2.7)
     plt.savefig("figure_triangle_cdf__ds_%s__mess_%f__gm_%s__filternoise_%s_hp_%s.pdf" %
@@ -165,7 +167,7 @@ if __name__ == "__main__":
     datasets = argv[1].split("_")
     available_datasets = ["cifar10", "svhn"]
     assert all(d in available_datasets for d in datasets)
-    
+
     measure = argv[2]
 
     hp = argv[3]

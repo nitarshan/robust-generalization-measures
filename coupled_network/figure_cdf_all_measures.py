@@ -10,14 +10,13 @@ from warnings import warn
 from common import pretty_measure
 
 
-DATA_PATH = "../data/nin.cifar10_svhn.csv"
 ENVIRONMENT_CACHE_PATH = "./environment_cache"
 
 
 def get_all_losses(hp, precomp, measure, min_ess=12.):
     """
-    Gather the loss in each environment where some hyperparameter is varied from v1 to v2 and the remaining HPs are kept
-    fixed. In each environment, the loss is a weighted expectation of the sign-error (as explained in the paper).
+    Get the value of the loss for each environment where a given hyperparameter is varied. The loss in each environment
+    is a weighted expectation of sign-errors (as explained in the paper).
 
     Parameters:
     -----------
@@ -32,6 +31,8 @@ def get_all_losses(hp, precomp, measure, min_ess=12.):
 
     Returns:
     --------
+    all_losses: array-like
+        The list of all losses where the hp is varied
 
     """
     if np.isclose(min_ess, 0):
@@ -191,7 +192,8 @@ def make_figure(datasets, min_ess=12, filter_noise=True):
                fontsize=8)
 
     f.set_size_inches(w=10, h=4.8)
-    plt.savefig("figure__signerror_cdf_per_hp__ds_%s__mw_%f_cdf_per_hp.pdf" % (data_key, min_ess),
+    plt.savefig("figure__signerror_cdf_per_hp__ds_%s__mess_%f__filternoise_%s_cdf_per_hp.pdf" % (data_key, min_ess,
+                                                                                                 filter_noise),
                 bbox_inches="tight")
 
 

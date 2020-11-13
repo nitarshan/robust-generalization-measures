@@ -15,7 +15,7 @@ from figure_cdf_all_measures import get_all_losses
 
 
 ENV_CACHE = "./environment_cache/"
-DATA_PATH = "../data/nin.cifar10_svhn.csv"
+
 
 # Command line arguments
 datasets = argv[1].split("_")
