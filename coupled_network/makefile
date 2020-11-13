@@ -26,6 +26,14 @@ paper:
 	@make figure-cdf-all-measures dataset=svhn min_weight=12 filter_noise=True
 	@mv figure__signerror_cdf_per_hp__ds_svhn__mess_12.000000__filternoise_True_cdf_per_hp.pdf figure_8.pdf
 
+	@echo "... Figure 9a"
+	@make figure-triangle-cdf dataset=svhn measure=complexity.pacbayes_orig hp=hp.model_depth min_weight=12 filter_noise=True
+	@mv figure_triangle_cdf__ds_svhn__mess_12.000000__gm_pacbayes.orig__filternoise_True_hp_hp.model_depth.pdf figure_9a.pdf
+
+	@echo "... Figure 9b"
+	@make figure-triangle-cdf dataset=svhn measure=complexity.pacbayes_orig hp=hp.model_width min_weight=12 filter_noise=True
+	@mv figure_triangle_cdf__ds_svhn__mess_12.000000__gm_pacbayes.orig__filternoise_True_hp_hp.model_width.pdf figure_9b.pdf
+
 	@echo "... Figure 10"
 	@make figure-cdf-all-measures dataset=cifar10 min_weight=12 filter_noise=True
 	@mv figure__signerror_cdf_per_hp__ds_cifar10__mess_12.000000__filternoise_True_cdf_per_hp.pdf figure_10.pdf
