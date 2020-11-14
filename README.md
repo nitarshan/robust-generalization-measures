@@ -26,7 +26,7 @@ We are working on cleaning and updating the code. Stay tuned for an update. If y
 
 The data used in this study are available in two forms:
 
-1. a csv file with all experimental records (model configurations, generalization measures, generalization error) [[here]](./data)
+1. a csv file with all experimental records (model configurations, generalization measures, generalization error) [[here]](./data/nin.cifar10_svhn.csv)
 2. trained models in Pytorch formal (coming soon)
 
 
