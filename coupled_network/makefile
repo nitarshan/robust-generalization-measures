@@ -42,6 +42,10 @@ paper:
 	@make figure-cdf-all-measures dataset=cifar10 min_ess=12 filter_noise=True
 	@mv figure__signerror_cdf_per_hp__ds_cifar10__mess_12.000000__filternoise_True_cdf_per_hp.pdf figure_10.pdf
 
+	@echo "... Figure 11"
+	@make figure-supp-cdf-all-measures-easy dataset=all min_ess=12 filter_noise=True
+	@mv figure__signerror_cdf_per_hp_easy_envs__ds_cifar10_svhn__mess_12.000000__filternoise_True_cdf_per_hp.pdf figure_11.pdf
+
 
 # Precompute the environments to speed up plotting
 precompute: .require_dataset .require_filter_noise
@@ -64,14 +68,20 @@ figure-triangle-cdf: .require_dataset .require_measure .require_hp .require_min_
 	python3 figure_triangle_cdf.py $(DATASET_$(dataset)) $(measure) $(hp) $(min_ess) $(filter_noise)
 
 
-# Supplementary Figure: number of environments remaining at various min effective sample sizes
+# Supplementary figure: CDF of all environment sign errors for easier environments
+figure-supp-cdf-all-measures-easy: precompute
+figure-supp-cdf-all-measures-easy: .require_dataset .require_min_ess .require_filter_noise
+	python supp_figure_easier_envs.py $(DATASET_$(dataset)) $(min_ess) $(filter_noise)
+
+
+# Supplementary figure: number of environments remaining at various min effective sample sizes
 figure-supp-envs-vs-miness: lower = 0
 figure-supp-envs-vs-miness: upper=100
 figure-supp-envs-vs-miness: .require_dataset
 	python supp_figure_envs_remaining.py $(DATASET_$(dataset)) $(lower) $(upper)
 
 
-# Ablation study of Monte Carlo noise filtering
+# Supplementary figure: ablation study of Monte Carlo noise filtering
 figure-supp-monte-carlo-ablation: .require_dataset .require_min_ess
 	@test ! -f environment_cache/precomputations__filternoisetrue__$(DATASET_$(dataset)).pkl && \
 		echo "Precomputation file not found (with noise filtering). Precomputing..." && \
