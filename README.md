@@ -24,7 +24,10 @@ We are working on cleaning and updating the code. Stay tuned for an update. If y
 
 ## Data
 
-The full data set used in our study will be made available here. We will provide 1) a csv file with all experimental records (model configurations, generalization measures, generalization error), 2) we also expect to be able to release the weights of the trained models (although this is a technical challenge due to the size of the data). Stay tuned.
+The data used in this study is available in two forms:
+
+1. a csv file with all experimental records (model configurations, generalization measures, generalization error) [[here]](./data)
+2. trained models in Pytorch formal (coming soon)
 
 
 ## Contact us
