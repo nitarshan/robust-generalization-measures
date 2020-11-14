@@ -2,4 +2,4 @@
 
 This directory contains the code used for the coupled-network (ranking) experiments.
 
-Simply run `make paper` to reproduce the figures shown in the paper.
+To reproduce the figures shown in the paper, simply run `make paper`.
