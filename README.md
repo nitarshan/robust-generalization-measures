@@ -17,7 +17,7 @@ This repository holds the code and data for our NeurIPS 2020 paper.
 
 * Data generation: coming soon
 * [Coupled-network experiments (ranking)](./experiments/coupled_networks)
-* [Single-network experiments](./experiments/single_networks)
+* [Single-network experiments](./experiments/single_network)
 
 We are working on cleaning and updating the code. Stay tuned for an update. If you really cannot wait, you can look at this [anonymized repository](https://github.com/nitarshan/banana-smoothie-recipe-1776), although the code is slightly outdated and hard to read.
 
