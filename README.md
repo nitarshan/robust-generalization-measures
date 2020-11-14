@@ -24,7 +24,7 @@ We are working on cleaning and updating the code. Stay tuned for an update. If y
 
 ## Data
 
-The data used in this study is available in two forms:
+The data used in this study are available in two forms:
 
 1. a csv file with all experimental records (model configurations, generalization measures, generalization error) [[here]](./data)
 2. trained models in Pytorch formal (coming soon)
