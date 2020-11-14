@@ -3,8 +3,6 @@ DATASET_cifar10 := cifar10
 DATASET_svhn := svhn
 DATASET_all := cifar10_svhn
 
-.PHONY: precompute figure-cdf-all-measures figure-triangle-cdf figure-supp-envs-vs-miness
-
 
 # Produce the same figures as in the paper
 paper:
@@ -52,7 +50,7 @@ precompute: .require_dataset .require_filter_noise
 	$(eval filter_noise_ := $(shell tr '[:upper:]' '[:lower:]' <<< $(filter_noise)))
 	@test ! -f environment_cache/precomputations__filternoise$(filter_noise_)__$(DATASET_$(dataset)).pkl && \
 		echo "Precomputation file not found. Precomputing environments..." && \
-		python3 create_environments.py $(DATASET_$(dataset)) $(tau) $(filter_noise_) \
+		python3 create_environments.py $(DATASET_$(dataset)) $(filter_noise_) \
 	|| echo "Precomputation file found."
 
 
