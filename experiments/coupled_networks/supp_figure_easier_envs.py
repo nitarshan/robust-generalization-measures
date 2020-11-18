@@ -15,7 +15,7 @@ from sys import argv
 from common import load_data, pretty_measure
 
 
-DATA_PATH = "../data/nin.cifar10_svhn.csv"
+DATA_PATH = "../../data/nin.cifar10_svhn.csv"
 ENVIRONMENT_CACHE_PATH = "./environment_cache"
 
 
