@@ -102,7 +102,7 @@ def make_figure(datasets, min_ess=12, filter_noise=True):
 
     # Load precomputations
     precomp = pickle.load(open(ENVIRONMENT_CACHE_PATH + "/precomputations__filternoise%s__%s.pkl" %
-                               (filter_noise, data_key), "rb"))
+                               (str(filter_noise).lower(), data_key), "rb"))
 
     # Get the losses for each generalization measure (also called complexity measure here), per hp
     complexity_losses_per_hp = {}
@@ -139,7 +139,6 @@ def make_figure(datasets, min_ess=12, filter_noise=True):
     # Don't plot dataset axis if there is only a single one
     if len(datasets) == 1:
         ordered_hps.remove("hp.dataset")
-        del complexity_losses_per_hp[c]["hp.dataset"]
         precomp["hps"].remove("hp.dataset")
 
     bins = np.linspace(0, 1, 100)
@@ -192,9 +191,8 @@ def make_figure(datasets, min_ess=12, filter_noise=True):
                fontsize=8)
 
     f.set_size_inches(w=10, h=4.8)
-    plt.savefig("figure__signerror_cdf_per_hp__ds_%s__mess_%f__filternoise_%s_cdf_per_hp.pdf" % (data_key, min_ess,
-                                                                                                 filter_noise),
-                bbox_inches="tight")
+    plt.savefig("figure__signerror_cdf_per_hp__ds_%s__mess_%f__filternoise_%s_cdf_per_hp.pdf" %
+                (data_key, min_ess, str(filter_noise).lower()), bbox_inches="tight")
 
 
 if __name__ == "__main__":

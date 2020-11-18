@@ -9,12 +9,12 @@ paper:
 	@echo "Building paper figures:"
 
 	@echo "... Figure 1"
-	@make figure-cdf-all-measures dataset=all min_ess=12 filter_noise=True
-	@mv figure__signerror_cdf_per_hp__ds_cifar10_svhn__mess_12.000000__filternoise_True_cdf_per_hp.pdf figure_1.pdf
+	@make figure-cdf-all-measures dataset=all min_ess=12 filter_noise=true
+	@mv figure__signerror_cdf_per_hp__ds_cifar10_svhn__mess_12.000000__filternoise_true_cdf_per_hp.pdf figure_1.pdf
 
 	@echo "... Figure 2"
-	@make figure-triangle-cdf dataset=all measure=complexity.pacbayes_mag_flatness hp=hp.model_depth min_ess=12 filter_noise=True
-	@mv figure_triangle_cdf__ds_cifar10_svhn__mess_12.000000__gm_pacbayes.mag.flatness__filternoise_True_hp_hp.model_depth.pdf figure_2.pdf
+	@make figure-triangle-cdf dataset=all measure=complexity.pacbayes_mag_flatness hp=hp.model_depth min_ess=12 filter_noise=true
+	@mv figure_triangle_cdf__ds_cifar10_svhn__mess_12.000000__gm_pacbayes.mag.flatness__filternoise_true_hp_hp.model_depth.pdf figure_2.pdf
 
 	@echo "... Figure 3"
 	@make figure-supp-envs-vs-miness dataset=all
@@ -25,24 +25,24 @@ paper:
 	@ls figure_monte_carlo_noise_ablation__*__ds_cifar10_svhn__mess_12.000000_cdf.pdf | cut -d'_' -f7 | xargs -I{} mv figure_monte_carlo_noise_ablation__{}__ds_cifar10_svhn__mess_12.000000_cdf.pdf figure_4_{}.pdf
 
 	@echo "... Figure 8"
-	@make figure-cdf-all-measures dataset=svhn min_ess=12 filter_noise=True
-	@mv figure__signerror_cdf_per_hp__ds_svhn__mess_12.000000__filternoise_True_cdf_per_hp.pdf figure_8.pdf
+	@make figure-cdf-all-measures dataset=svhn min_ess=12 filter_noise=true
+	@mv figure__signerror_cdf_per_hp__ds_svhn__mess_12.000000__filternoise_true_cdf_per_hp.pdf figure_8.pdf
 
 	@echo "... Figure 9a"
-	@make figure-triangle-cdf dataset=svhn measure=complexity.pacbayes_orig hp=hp.model_depth min_ess=12 filter_noise=True
-	@mv figure_triangle_cdf__ds_svhn__mess_12.000000__gm_pacbayes.orig__filternoise_True_hp_hp.model_depth.pdf figure_9a.pdf
+	@make figure-triangle-cdf dataset=svhn measure=complexity.pacbayes_orig hp=hp.model_depth min_ess=12 filter_noise=true
+	@mv figure_triangle_cdf__ds_svhn__mess_12.000000__gm_pacbayes.orig__filternoise_true_hp_hp.model_depth.pdf figure_9a.pdf
 
 	@echo "... Figure 9b"
-	@make figure-triangle-cdf dataset=svhn measure=complexity.pacbayes_orig hp=hp.model_width min_ess=12 filter_noise=True
-	@mv figure_triangle_cdf__ds_svhn__mess_12.000000__gm_pacbayes.orig__filternoise_True_hp_hp.model_width.pdf figure_9b.pdf
+	@make figure-triangle-cdf dataset=svhn measure=complexity.pacbayes_orig hp=hp.model_width min_ess=12 filter_noise=true
+	@mv figure_triangle_cdf__ds_svhn__mess_12.000000__gm_pacbayes.orig__filternoise_true_hp_hp.model_width.pdf figure_9b.pdf
 
 	@echo "... Figure 10"
-	@make figure-cdf-all-measures dataset=cifar10 min_ess=12 filter_noise=True
-	@mv figure__signerror_cdf_per_hp__ds_cifar10__mess_12.000000__filternoise_True_cdf_per_hp.pdf figure_10.pdf
+	@make figure-cdf-all-measures dataset=cifar10 min_ess=12 filter_noise=true
+	@mv figure__signerror_cdf_per_hp__ds_cifar10__mess_12.000000__filternoise_true_cdf_per_hp.pdf figure_10.pdf
 
 	@echo "... Figure 11"
-	@make figure-supp-cdf-all-measures-easy dataset=all min_ess=12 filter_noise=True
-	@mv figure__signerror_cdf_per_hp_easy_envs__ds_cifar10_svhn__mess_12.000000__filternoise_True_cdf_per_hp.pdf figure_11.pdf
+	@make figure-supp-cdf-all-measures-easy dataset=all min_ess=12 filter_noise=true
+	@mv figure__signerror_cdf_per_hp_easy_envs__ds_cifar10_svhn__mess_12.000000__filternoise_true_cdf_per_hp.pdf figure_11.pdf
 
 
 # Precompute the environments to speed up plotting
@@ -118,5 +118,5 @@ endif
 
 .require_filter_noise:
 ifndef filter_noise
-	$(error filter_noise parameter is required. This enables/disables Monte Carlo noise filtering. It should be enabled unless you are running some kind of ablation study. Add filter_noise=[True|False] to your command.)
+	$(error filter_noise parameter is required. This enables/disables Monte Carlo noise filtering. It should be enabled unless you are running some kind of ablation study. Add filter_noise=[true|False] to your command.)
 endif

@@ -21,7 +21,7 @@ def get_complexity_losses_per_hp(datasets, min_ess, filter_noise):
     data_key = "_".join(datasets)
 
     precomp = pickle.load(open(ENVIRONMENT_CACHE_PATH + "/precomputations__filternoise%s__%s.pkl" %
-                               (filter_noise, data_key), "rb"))
+                               (str(filter_noise).lower(), data_key), "rb"))
 
     # Get the losses for each complexity measure, per hp
     complexity_losses_per_hp = {}

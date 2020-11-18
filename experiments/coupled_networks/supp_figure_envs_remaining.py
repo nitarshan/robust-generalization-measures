@@ -30,7 +30,7 @@ effective_sample_sizes = range(lower, upper + 1)
 
 n_envs_per_hp = defaultdict(list)
 for ess in effective_sample_sizes:
-    precomp = pickle.load(open(ENV_CACHE + "/precomputations__filternoiseTrue__%s.pkl" % "_".join(datasets), "rb"))
+    precomp = pickle.load(open(ENV_CACHE + "/precomputations__filternoisetrue__%s.pkl" % "_".join(datasets), "rb"))
 
     # Get the losses for each complexity measure, per hp
     for hp in precomp["hps"]:

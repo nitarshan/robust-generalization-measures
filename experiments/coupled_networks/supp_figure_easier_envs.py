@@ -112,7 +112,7 @@ def make_figure(datasets, min_ess=12, filter_noise=True):
 
     # Load the precomputations
     precomp = pickle.load(open(ENVIRONMENT_CACHE_PATH + "/precomputations__filternoise%s__%s.pkl" %
-                               (filter_noise, data_key), "rb"))
+                               (str(filter_noise).lower(), data_key), "rb"))
 
     # Get the list of losses for each generalization measure
     # We will later report statistics of the distribution of losses for each measure
@@ -180,7 +180,7 @@ def make_figure(datasets, min_ess=12, filter_noise=True):
 
     f.set_size_inches(w=10, h=4.8)
     plt.savefig("figure__signerror_cdf_per_hp_easy_envs__ds_%s__mess_%f__filternoise_%s_cdf_per_hp.pdf" %
-                (data_key, min_ess, filter_noise), bbox_inches="tight")
+                (data_key, min_ess, str(filter_noise).lower()), bbox_inches="tight")
 
 
 if __name__ == "__main__":

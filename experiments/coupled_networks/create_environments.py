@@ -93,7 +93,8 @@ def create_environments(datasets, testing_set_size, filter_noise=True):
         # The sum of weights for each pair of hyperparameters Later used to normalize and calculate the
         # effective sample size.
         "env_weights": {"raw": env_weights, "squared": env_weights_squared}
-    }, open(SAVE_PATH + "/precomputations__filternoise%s__%s.pkl" % (filter_noise, "_".join(datasets)), "wb"))
+    }, open(SAVE_PATH + "/precomputations__filternoise%s__%s.pkl" % \
+                        (str(filter_noise).lower(), "_".join(datasets)), "wb"))
 
 
 if __name__ == "__main__":

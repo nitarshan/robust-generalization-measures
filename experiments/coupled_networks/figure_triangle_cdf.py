@@ -91,7 +91,7 @@ def make_figure(datasets, measure, hp, min_ess=12, filter_noise=True):
     data_key = "_".join(datasets)
 
     precomp = pickle.load(open(ENVIRONMENT_CACHE_PATH + "/precomputations__filternoise%s__%s.pkl" %
-                               (filter_noise, data_key), "rb"))
+                               (str(filter_noise).lower(), data_key), "rb"))
 
     box_losses = triangle_cdf_plots_get_losses(hp, precomp, measure, min_ess=min_ess)
 
@@ -160,7 +160,7 @@ def make_figure(datasets, measure, hp, min_ess=12, filter_noise=True):
 
     f.set_size_inches(w=1.3, h=2.7)
     plt.savefig("figure_triangle_cdf__ds_%s__mess_%f__gm_%s__filternoise_%s_hp_%s.pdf" %
-                (data_key, min_ess, pretty_measure(measure), filter_noise, hp), bbox_inches="tight")
+                (data_key, min_ess, pretty_measure(measure), str(filter_noise).lower(), hp), bbox_inches="tight")
 
 
 if __name__ == "__main__":
