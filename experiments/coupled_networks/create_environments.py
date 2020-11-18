@@ -10,7 +10,7 @@ from tqdm import tqdm
 from common import get_complexity_measures, hoeffding_weight, get_hps, load_data, sign_error
 
 
-DATA_PATH = "../data/nin.cifar10_svhn.csv"
+DATA_PATH = "../../data/nin.cifar10_svhn.csv"
 SAVE_PATH = "environment_cache"
 makedirs(SAVE_PATH, exist_ok=True)
 
