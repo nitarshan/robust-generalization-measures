@@ -47,7 +47,7 @@ paper:
 
 # Precompute the environments to speed up plotting
 precompute: .require_dataset .require_filter_noise
-	$(eval filter_noise_ := $(shell tr '[:upper:]' '[:lower:]' <<< $(filter_noise)))
+	$(eval filter_noise_ := $(shell echo $(filter_noise)|tr '[:upper:]' '[:lower:]'))
 	@test ! -f environment_cache/precomputations__filternoise$(filter_noise_)__$(DATASET_$(dataset)).pkl && \
 		echo "Precomputation file not found. Precomputing environments..." && \
 		python3 create_environments.py $(DATASET_$(dataset)) $(filter_noise_) \
