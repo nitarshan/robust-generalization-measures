@@ -11,22 +11,27 @@
 
 ![Cover figure](https://github.com/nitarshan/robust-generalization-measures/raw/master/paper_graphic.png)
 
-This repository holds the code and data for our NeurIPS 2020 paper.
 
-## Code
+## Directory Structure
 
-* Data generation: coming soon
-* [Coupled-network experiments (ranking)](./experiments/coupled_networks)
-* [Single-network experiments](./experiments/single_network)
+```
+├── experiments
+    ├── coupled_networks
+        └── ...
+    └── single_network
+        └── ...
+├── data
+    └── generation
+      ├── ...
+      └── train.py
+    └── nin.cifar10_svhn.csv
+```
 
+You can also look at the exact state of the code as submitted during the peer-review process [here](https://github.com/nitarshan/banana-smoothie-recipe-1776).
 
 ## Data
 
-The data used in this study are available in two forms:
-
-1. a csv file with all experimental records (model configurations, generalization measures, generalization error) [[here]](./data/nin.cifar10_svhn.csv)
-2. trained models in Pytorch format (coming soon)
-
+The data used in this study are available in a csv file with all experimental records (model configurations, generalization measures, generalization error) (`data/nin.cifar10_svhn.csv`)
 
 ## Contact us
 
